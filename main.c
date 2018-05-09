@@ -11,6 +11,7 @@ int main()
 
 	Stack *stack = stack_new();
 	char *tempName = NULL;
+	int a,b,c,x;
 
 	stack_push(stack, s_elem_new("Null"));
 	stack_push(stack, s_elem_new("Eins"));
