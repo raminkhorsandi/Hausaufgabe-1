@@ -101,8 +101,14 @@ char* stack_peek(Stack *stack)
 
 void stack_pop(Stack *stack, char **name)
 {
+	if (NULL == stack || NULL == stack->head || 0 == stack->size) {
+		return;
+	}
+	// malloc something
+	// name = &stack->head->name;
 
-	//TODO
+	stack->head = stack->head->predecessor;
+
 	return;
 }
 
@@ -115,6 +121,9 @@ void stack_print(Stack *stack)
  	// for (s_elem *elem = stack->head; NULL != elem->predecessor; elem = elem->predecessor) {
 	// 	printf("(%s, %d)\n", elem->name, elem->index);
 	// }
+	if (0 == stack_size(stack)){
+		printf("Stack is empty\n");
+	}
 	s_elem *elem = stack->head;
 	for (int i = 0; i < stack_size(stack); i++) {
 		printf("(%s, %d)\n", elem->name, elem->index);
