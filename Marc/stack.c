@@ -1,4 +1,4 @@
-	#include "stack.h"
+#include "stack.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,50 +10,51 @@ struct Stack
 	s_elem *head;
 };
 /* Beginning of assignment -------------------------------------------------------------------------- */
-struct s_elem // done
+struct s_elem
 {
-	char *name; // name "string"
+	char *name;
 	int index;
-	s_elem *predecessor; // points to element below the current one
+	s_elem *predecessor;
 };
 
-Stack* stack_new() // done
+Stack* stack_new()
 {
-	Stack *stack = malloc(sizeof(stack)); // Speicher für den Stack
-	if(NULL == stack) {
-		printf("Error");
+	Stack *stack = malloc(sizeof(Stack)); // reserviere Speicherplatz
+
+	if (NULL == stack) // Speicherplatz voll, oder Problem mit malloc
 		return NULL;
-	}
-	else {
-		// stack->head = malloc(sizeof(s_elem));
-		stack->size = 0;
-		return stack;
-	}
+
+	// Initialisieren der Variablen
+	stack->size = 0;
+	stack->head = NULL;
+
+	return stack;
 }
 
-s_elem* s_elem_new(char* name) // done
+s_elem* s_elem_new(char* name)
 {
-	s_elem *element = malloc(sizeof(s_elem)); // Speicher für element
-	if (NULL == element)
+	s_elem *elem = malloc(sizeof(s_elem)); // reserviere Speicherplatz
+
+	if (NULL == elem) // Speicherplatz voll, oder Problem mit malloc
 		return NULL;
 
-	element->name = malloc(sizeof(*name)); // Speicher für name
-	if (NULL == element->name)
-		return NULL;
-	else
-		element->name = name;
+	// Initialisieren der Variablen
+	elem->name = name;
+	elem->index = -1; // kein real moeglicher Index
+	elem->predecessor = NULL;
 
-	element->index = -1;
-
-	element->predecessor = malloc(sizeof(s_elem)); // Speicher für predecessor
-	if (NULL == element->predecessor)
-		return NULL;
-
-	return element;
+	return elem;
 }
 
 void stack_free(Stack *stack)
 {
+	// stack
+	// all Elements
+
+
+
+
+
 	s_elem *current = stack->head;
 	s_elem *next = NULL;
 	while(NULL != next) {
@@ -66,6 +67,7 @@ void stack_free(Stack *stack)
 		current = next;
 	}
 	free(stack);
+	free(stack->head);
 
 	printf("mem is freed\n");
 
@@ -74,41 +76,30 @@ void stack_free(Stack *stack)
 
 char* stack_push(Stack *stack, s_elem* newElem)
 {
-	// if stack or element are not valid
-	if (NULL == stack || NULL == newElem) {
+  if (NULL == stack || NULL == newElem) // Falls Pointer ungueltig sind
 		return NULL;
-	}
 
-	// new head element - make old head accessible via *predecessor
-	newElem->predecessor = stack->head;
-	stack->head = newElem;
+	newElem->predecessor = stack->head; // mache voriges oberstes Element zugaenglich
+	stack->head = newElem; // neues Element ist head
 
-	(stack->head)->index = stack->size;
-	// increase size of stack
-	++(stack->size);
+	stack->head->index = stack->size; // index des neuen Elements
 
-	return (stack->head)->name;
+	stack->size++; // Groesse des Stacks anpassen
+
+	return stack->head->name;
 }
 
 char* stack_peek(Stack *stack)
 {
-	if (NULL == stack || NULL == stack->head || 0 == stack->size) {
+	if (NULL == stack) // Falls Pointer ungueltig ist
 		return NULL;
-	}
-
-	return (stack->head)->name;
+	return stack->head->name;
 }
 
 void stack_pop(Stack *stack, char **name)
 {
-	if (NULL == stack || NULL == stack->head || 0 == stack->size) {
-		return;
-	}
-	// malloc something
-	// name = &stack->head->name;
-
-	stack->head = stack->head->predecessor;
-
+	stack = NULL;
+	name = NULL;
 	return;
 }
 
@@ -118,18 +109,15 @@ int stack_size(Stack *stack){
 
 void stack_print(Stack *stack)
 {
- 	// for (s_elem *elem = stack->head; NULL != elem->predecessor; elem = elem->predecessor) {
-	// 	printf("(%s, %d)\n", elem->name, elem->index);
-	// }
-	if (0 == stack_size(stack)){
-		printf("Stack is empty\n");
+	if (0 == stack->size)
+		return;
+
+	s_elem *current = stack->head;
+	for(int i = 0; i < stack_size(stack); i++) {
+		printf("(%d, %s)\n", current->index, current->name);
+		current = current->predecessor;
 	}
-	s_elem *elem = stack->head;
-	for (int i = 0; i < stack_size(stack); i++) {
-		printf("(%s, %d)\n", elem->name, elem->index);
-		elem = elem->predecessor;
-	}
+
   return;
 }
-
 /* End of assignment -------------------------------------------------------------------------- */
