@@ -46,24 +46,24 @@ s_elem* s_elem_new(char* name) // done
 	return element;
 }
 
-// void stack_free(Stack *stack)
-// {
-// 	s_elem *current = stack->head;
-// 	s_elem *next;
-// 	do {
-// 		next = current->predecessor;
-//
-// 		free(current->name);
-// 		free(current->predecessor);
-// 		free(current);
-//
-// 		current = next;
-// 	} while(NULL != next);
-//
-// 	free(stack);
-//
-// 	return;
-// }
+void stack_free(Stack *stack)
+{
+	s_elem *current = stack->head;
+	s_elem *next;
+	do {
+		next = current->predecessor;
+
+		free(current->name);
+		free(current->predecessor);
+		free(current);
+
+		current = next;
+	} while(NULL != next);
+
+	free(stack);
+
+	return;
+}
 
 char* stack_push(Stack *stack, s_elem* newElem)
 {
