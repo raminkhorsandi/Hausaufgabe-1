@@ -12,15 +12,14 @@ struct Stack
 /* Beginning of assignment -------------------------------------------------------------------------- */
 struct s_elem // done
 {
-	char *name;
+	char *name; // name "string"
 	int index;
-	s_elem *predecessor;
-	// TODO: One element of a stack consists of a name, an integer index and a pointer to the element under this one (predecessor)
+	s_elem *predecessor; // points to element below the current one
 };
 
 Stack* stack_new() // done
 {
-	Stack *stack = malloc(sizeof(Stack));
+	Stack *stack = malloc(sizeof(Stack)); // Speicher für den Stack
 	if(NULL == stack)
 		return NULL;
 	else
@@ -29,37 +28,42 @@ Stack* stack_new() // done
 
 s_elem* s_elem_new(char* name) // done
 {
-	s_elem *element = malloc(sizeof(s_elem));
+	s_elem *element = malloc(sizeof(s_elem)); // Speicher für element
+	if (NULL == element)
+		return NULL;
 
-	element->name = malloc(sizeof(*name)); // if NULL ...
-	element->name = name;
-
+	element->name = malloc(sizeof(*name)); // Speicher für name
+	if (NULL == element->name)
+		return NULL;
+	else
+		element->name = name;
 	element->index = -1;
 
-	element->predecessor = malloc(sizeof(s_elem));
-	element->predecessor = NULL;
+	element->predecessor = malloc(sizeof(s_elem)); // Speicher für predecessor
+	if (NULL == element->predecessor)
+		return NULL;
 
 	return element;
 }
 
-// void stack_free(Stack *stack)
-// {
-// 	s_elem *current = stack->head;
-// 	s_elem *next;
-// 	do {
-// 		next = current->predecessor;
-//
-// 		free(current->name);
-// 		free(current->predecessor);
-// 		free(current);
-//
-// 		current = next;
-// 	} while(NULL != next);
-//
-// 	free(stack);
-//
-// 	return;
-// }
+void stack_free(Stack *stack)
+{
+	s_elem *current = stack->head;
+	s_elem *next;
+	do {
+		next = current->predecessor;
+
+		free(current->name);
+		free(current->predecessor);
+		free(current);
+
+		current = next;
+	} while(NULL != next);
+
+	free(stack);
+
+	return;
+}
 
 char* stack_push(Stack *stack, s_elem* newElem)
 {
