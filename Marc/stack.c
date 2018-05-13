@@ -37,7 +37,6 @@ s_elem* s_elem_new(char* name) // done
 		return NULL;
 	else
 		element->name = name;
-
 	element->index = -1;
 
 	element->predecessor = malloc(sizeof(s_elem)); // Speicher für predecessor
