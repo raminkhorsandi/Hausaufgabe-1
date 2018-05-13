@@ -74,7 +74,7 @@ char* stack_peek(Stack *stack)
 		return NULL;
 	}
 	else{
-		return stack->head->name;
+		return *stack->head->name;
 	}
 	return NULL; //falls Fehler
 }
@@ -101,11 +101,13 @@ int stack_size(Stack *stack){
 void stack_print(Stack *stack)
 {
  	//TODO
- 	if(stack->size == 0) return;
+ 	if(stack->size == 0){ 
+ 		return;
+ 	}
  	s_elem* current = stack->head;
  	while(current->predec != NULL){
  		printf("(%d,%s)\n",current->index,current->name);
+ 		current = current->predec;
  	}
-  return;
 }
 /* End of assignment -------------------------------------------------------------------------- */
