@@ -94,13 +94,22 @@ void stack_pop(Stack *stack, char **name)
 		return;
 	}
 
-	*name = malloc(sizeof(char*));
+	s_elem *headElem = stack->head;
+	*name = malloc(sizeof(headElem->name));
 
-	*name = stack->head->name;
+	// printf("%c", **(name + 2));
+	for(int i = 0; '\0' != *(headElem->name + i); i++) {
+		*(name + i) = (headElem->name + i);
+		// printf("%c", *(headElem->name + i));
+	}
+	printf("%sxxx\n", *name);
 
-	// stack->head = stack->head->predecessor;
+	stack->head = headElem->predecessor;
 
-	// --(stack->size);
+	// free(headElem->name);
+	free(headElem);
+
+	--(stack->size);
 
 	return;
 }

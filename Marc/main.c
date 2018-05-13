@@ -11,22 +11,21 @@ int main()
 	Stack *stack = NULL;
 	stack = stack_new();
 	char *tempName = NULL;
-	stack_print(stack);
 	printf("---\n");
 	stack_push(stack, s_elem_new("Null"));
 	stack_push(stack, s_elem_new("Eins"));
 	stack_push(stack, s_elem_new("Zwei"));
+	stack_print(stack);
+	printf("---\n");
 	stack_pop(stack, &tempName);
-	printf("%s\n", tempName);
 	stack_print(stack);
 	printf("---\n");
 	stack_push(stack, s_elem_new("Zwei"));
-	stack_print(stack);
-	printf("---\n");
 	stack_push(stack, s_elem_new("Drei"));
 	stack_push(stack, s_elem_new("Vier"));
-
 	stack_print(stack);
+
+	printf("%s\n", tempName);
 
 	// free(tempName);
 	stack_free(stack);
