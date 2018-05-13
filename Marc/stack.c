@@ -51,23 +51,14 @@ void stack_free(Stack *stack)
 	// stack
 	// all Elements
 
-
-
-
-
 	s_elem *current = stack->head;
 	s_elem *next = NULL;
-	while(NULL != next) {
+	while(NULL != current) {
 		next = current->predecessor;
-
-		free(current->name);
-		free(current->predecessor);
 		free(current);
-
 		current = next;
 	}
 	free(stack);
-	free(stack->head);
 
 	printf("mem is freed\n");
 
@@ -98,8 +89,19 @@ char* stack_peek(Stack *stack)
 
 void stack_pop(Stack *stack, char **name)
 {
-	stack = NULL;
-	name = NULL;
+	if (NULL == stack || NULL == stack->head || 0 == stack->size) { // Fehler oder leerer Stack
+		*name = NULL; // "return" NULL
+		return;
+	}
+
+	*name = malloc(sizeof(char*));
+
+	*name = stack->head->name;
+
+	// stack->head = stack->head->predecessor;
+
+	// --(stack->size);
+
 	return;
 }
 

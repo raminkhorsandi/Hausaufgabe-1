@@ -16,7 +16,8 @@ int main()
 	stack_push(stack, s_elem_new("Null"));
 	stack_push(stack, s_elem_new("Eins"));
 	stack_push(stack, s_elem_new("Zwei"));
-	// stack_pop(stack, &tempName);
+	stack_pop(stack, &tempName);
+	printf("%s\n", tempName);
 	stack_print(stack);
 	printf("---\n");
 	stack_push(stack, s_elem_new("Zwei"));
@@ -27,7 +28,9 @@ int main()
 
 	stack_print(stack);
 
+	// free(tempName);
 	stack_free(stack);
+	printf("%s\n", tempName);
 
 	return 0;
 }
