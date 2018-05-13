@@ -24,9 +24,10 @@ Stack* stack_new() // done
 		printf("Error");
 		return NULL;
 	}
-	else
+	else {
 		stack->size = 0;
 		return stack;
+	}
 }
 
 s_elem* s_elem_new(char* name) // done
@@ -40,6 +41,7 @@ s_elem* s_elem_new(char* name) // done
 		return NULL;
 	else
 		element->name = name;
+
 	element->index = -1;
 
 	element->predecessor = malloc(sizeof(s_elem)); // Speicher für predecessor
@@ -52,8 +54,8 @@ s_elem* s_elem_new(char* name) // done
 void stack_free(Stack *stack)
 {
 	s_elem *current = stack->head;
-	s_elem *next;
-	do {
+	s_elem *next = NULL;
+	while(NULL != next) {
 		next = current->predecessor;
 
 		free(current->name);
@@ -61,9 +63,11 @@ void stack_free(Stack *stack)
 		free(current);
 
 		current = next;
-	} while(NULL != next);
+	}
 
 	free(stack);
+
+	printf("mem is freed\n");
 
 	return;
 }
@@ -88,7 +92,7 @@ char* stack_push(Stack *stack, s_elem* newElem)
 
 char* stack_peek(Stack *stack)
 {
-	if (NULL == stack || NULL == stack->head) {
+	if (NULL == stack || NULL == stack->head || 0 == stack->size) {
 		return NULL;
 	}
 

@@ -17,7 +17,7 @@ s_elem* s_elem_new(char* name);
 /**
  * Deletes the stack and frees all allocated memory.
  */
-// void stack_free(Stack *stack);
+void stack_free(Stack *stack);
 
 /*
  * Inserts an element to the stack and sets its index.

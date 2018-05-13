@@ -5,7 +5,7 @@
 This main function is an example to test the implemented data structure and its functions.
 Be advised that further tests will be conducted to grade the submission.
 */
-
+// void stack_free(Stack *stack); // muss weg
 int main()
 {
 
@@ -18,7 +18,7 @@ int main()
 	// stack_push(stack, s_elem_new("Eins"));
 	//
 	// stack_peek(stack);
-	//
+
 	// // printf("%s\n", "EINS");
 	//
 	// stack_push(stack,s_elem_new("Zwei"));
@@ -31,7 +31,7 @@ int main()
 	// stack_push(stack, s_elem_new("Fünf"));
 
 	stack_print(stack);
-	// stack_free(stack);
+	stack_free(stack);
 
 // /* should print:
 //   (0,Null)
