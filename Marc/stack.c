@@ -97,19 +97,13 @@ void stack_pop(Stack *stack, char **name)
 	s_elem *headElem = stack->head;
 	*name = malloc(sizeof(headElem->name));
 
-	// printf("%c", **(name + 2));
-	for(int i = 0; '\0' != *(headElem->name + i); i++) {
-		*(name + i) = (headElem->name + i);
-		// printf("%c", *(headElem->name + i));
-	}
-	printf("%sxxx\n", *name);
+	name = &(headElem->name);
 
 	stack->head = headElem->predecessor;
 
-	// free(headElem->name);
-	free(headElem);
+	free(headElem); // altes head element wird freigegeben
 
-	--(stack->size);
+	--(stack->size); // stack schrumpft
 
 	return;
 }
