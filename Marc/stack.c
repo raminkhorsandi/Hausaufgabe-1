@@ -59,9 +59,6 @@ void stack_free(Stack *stack)
 		current = next;
 	}
 	free(stack);
-
-	printf("mem is freed\n");
-
 	return;
 }
 
@@ -97,7 +94,7 @@ void stack_pop(Stack *stack, char **name)
 	s_elem *headElem = stack->head;
 	*name = malloc(sizeof(headElem->name));
 
-	name = &(headElem->name);
+	strcpy(*name, headElem->name);
 
 	stack->head = headElem->predecessor;
 
