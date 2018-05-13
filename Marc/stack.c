@@ -59,9 +59,6 @@ void stack_free(Stack *stack)
 		current = next;
 	}
 	free(stack);
-
-	printf("mem is freed\n");
-
 	return;
 }
 
@@ -94,10 +91,10 @@ void stack_pop(Stack *stack, char **name)
 		return;
 	}
 
-	s_elem *headElem = stack->head;
-	*name = malloc(sizeof(headElem->name));
+	s_elem *headElem = stack->head; // zu poppendes Element zwischenspeichern
+	*name = malloc(sizeof(headElem->name)); // speicherplatz reservieren für name
 
-	name = &(headElem->name);
+	strcpy(*name, headElem->name);
 
 	stack->head = headElem->predecessor;
 
