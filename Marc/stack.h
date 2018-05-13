@@ -40,7 +40,7 @@ char* stack_peek(Stack *stack);
  * Memory for the name should be allocated in the function.
  * Returns the name (or NULL if stack is empty) using the **name argument.
  */
-// void stack_pop(Stack *stack, char **name);
+void stack_pop(Stack *stack, char **name);
 /**
  * The current size of the stack.
  *

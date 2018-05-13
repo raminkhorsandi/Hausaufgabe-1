@@ -25,6 +25,7 @@ Stack* stack_new() // done
 		return NULL;
 	}
 	else {
+		// stack->head = malloc(sizeof(s_elem));
 		stack->size = 0;
 		return stack;
 	}
@@ -64,7 +65,6 @@ void stack_free(Stack *stack)
 
 		current = next;
 	}
-
 	free(stack);
 
 	printf("mem is freed\n");
@@ -99,12 +99,12 @@ char* stack_peek(Stack *stack)
 	return (stack->head)->name;
 }
 
-// void stack_pop(Stack *stack, char **name)
-// {
-//
-// 	//TODO
-// 	return;
-// }
+void stack_pop(Stack *stack, char **name)
+{
+
+	//TODO
+	return;
+}
 
 int stack_size(Stack *stack){
   return stack->size;
@@ -120,8 +120,6 @@ void stack_print(Stack *stack)
 		printf("(%s, %d)\n", elem->name, elem->index);
 		elem = elem->predecessor;
 	}
-	// free(elem);
-	stack = NULL;
   return;
 }
 
