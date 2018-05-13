@@ -19,10 +19,13 @@ struct s_elem // done
 
 Stack* stack_new() // done
 {
-	Stack *stack = malloc(sizeof(Stack)); // Speicher für den Stack
-	if(NULL == stack)
+	Stack *stack = malloc(sizeof(stack)); // Speicher für den Stack
+	if(NULL == stack) {
+		printf("Error");
 		return NULL;
+	}
 	else
+		stack->size = 0;
 		return stack;
 }
 
@@ -108,11 +111,11 @@ void stack_print(Stack *stack)
  	// for (s_elem *elem = stack->head; NULL != elem->predecessor; elem = elem->predecessor) {
 	// 	printf("(%s, %d)\n", elem->name, elem->index);
 	// }
-	// s_elem *elem = stack->head;
-	// for (int i = 0; i < stack_size(stack); i++) {
-	// 	printf("(%s, %d)\n", elem->name, elem->index);
-	// 	elem = elem->predecessor;
-	// }
+	s_elem *elem = stack->head;
+	for (int i = 0; i < stack_size(stack); i++) {
+		printf("(%s, %d)\n", elem->name, elem->index);
+		elem = elem->predecessor;
+	}
 	// free(elem);
 	stack = NULL;
   return;

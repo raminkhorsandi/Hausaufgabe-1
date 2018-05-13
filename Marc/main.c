@@ -9,28 +9,29 @@ Be advised that further tests will be conducted to grade the submission.
 int main()
 {
 
-	Stack *stack = stack_new();
+	Stack *stack = NULL;
+	stack = stack_new();
 	// char *tempName = NULL;
 
 	stack_push(stack, s_elem_new("Null"));
 
-	stack_push(stack, s_elem_new("Eins"));
-
-	stack_peek(stack);
-
-	// printf("%s\n", "EINS");
-
-	stack_push(stack,s_elem_new("Zwei"));
-	// stack_pop(stack, &tempName);
+	// stack_push(stack, s_elem_new("Eins"));
+	//
 	// stack_peek(stack);
-	stack_push(stack, s_elem_new("Zwei"));
-	stack_push(stack, s_elem_new("Drei"));
-	stack_push(stack, s_elem_new("Vier"));
-	// stack_peek(stack);
-	stack_push(stack, s_elem_new("Fünf"));
+	//
+	// // printf("%s\n", "EINS");
+	//
+	// stack_push(stack,s_elem_new("Zwei"));
+	// // stack_pop(stack, &tempName);
+	// // stack_peek(stack);
+	// stack_push(stack, s_elem_new("Zwei"));
+	// stack_push(stack, s_elem_new("Drei"));
+	// stack_push(stack, s_elem_new("Vier"));
+	// // stack_peek(stack);
+	// stack_push(stack, s_elem_new("Fünf"));
 
 	stack_print(stack);
-
+	// stack_free(stack);
 
 // /* should print:
 //   (0,Null)
