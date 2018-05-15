@@ -49,19 +49,16 @@ s_elem* s_elem_new(char* name)
 void stack_free(Stack *stack)
 {
 	// stack
-	// all Elements
-
+		// all Elements
+	// zwei laufelemente
 	s_elem *current = stack->head;
 	s_elem *next = NULL;
-	while(NULL != current) {
+	while(NULL != current) { // bis alle elemente durchlaufen sind
 		next = current->predecessor;
-		free(current);
-		current = next;
+		free(current); // freigeben
+		current = next; // naechstes
 	}
 	free(stack);
-
-	printf("mem is freed\n");
-
 	return;
 }
 
@@ -84,7 +81,7 @@ char* stack_peek(Stack *stack)
 {
 	if (NULL == stack) // Falls Pointer ungueltig ist
 		return NULL;
-	return stack->head->name;
+	return stack->head->name; // uebergebe namen
 }
 
 void stack_pop(Stack *stack, char **name)
@@ -94,13 +91,16 @@ void stack_pop(Stack *stack, char **name)
 		return;
 	}
 
-	*name = malloc(sizeof(char*));
+	s_elem *headElem = stack->head; // zu poppendes Element zwischenspeichern
+	*name = malloc(sizeof(headElem->name)); // speicherplatz reservieren für name
 
-	*name = stack->head->name;
+	strcpy(*name, headElem->name); // mache Namen des Elements ueber **name verfuegbar
 
-	// stack->head = stack->head->predecessor;
+	stack->head = headElem->predecessor; // ersetze oberstes element durch zweitoberstes
 
-	// --(stack->size);
+	free(headElem); // altes head element wird freigegeben
+
+	--(stack->size); // stack schrumpft
 
 	return;
 }
@@ -114,12 +114,11 @@ void stack_print(Stack *stack)
 	if (0 == stack->size)
 		return;
 
-	s_elem *current = stack->head;
-	for(int i = 0; i < stack_size(stack); i++) {
-		printf("(%d, %s)\n", current->index, current->name);
-		current = current->predecessor;
+	s_elem *current = stack->head; // laufelement
+	for(int i = 0; i < stack_size(stack); i++) { // laeuft nach stackgroesse den stack durch
+		printf("(%d, %s)\n", current->index, current->name); // print
+		current = current->predecessor; // neues element
 	}
-
   return;
 }
 /* End of assignment -------------------------------------------------------------------------- */
