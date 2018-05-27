@@ -1,0 +1,16 @@
+2.3 
+a) Das Betriebssystem erschafft ein Prozess um unabhängig voneinander laufende Programme zu realisieren.
+
+b)  
+Zwischen den Prozessen besehen Vater-Kind-Beziehungen.
+Der erste Prozess wird direkt vom Systemkern gestartet mit init [1], wobei 1 die Prozessnummer ist.
+Dabei läuft im Hintergrund ein Programm, wie zum Beispiel Daemon, die bestimmte Dienste wie Terminaldienste, Netzwerkdienste usw. realisiert.
+Dann haben wir unseren Unix-Shell, die unsere Benutzerschnittstelle ist, in der Benutzer Kommandos in einer Eingabezeile eintippen können,
+die der Computer dann ausführt.
+Der Prozess wir aufgeteilt in mehrere nebenläufige oder parallele Aktivitäten, die alle als eigene Prozesse initialisiert werden. 
+Dies geschieht durch fork(), welches einen neuen Prozess erzeugt, dabei eine Kopie des Vaters erstellt, mit der einzigen Unterscheidung
+der Prozessnummer.
+
+Quelle: https://de.wikipedia.org/wiki/Unix-Shell
+https://de.wikipedia.org/wiki/Daemon
+Vorlesungsfolie: Folie 48-51
