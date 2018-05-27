@@ -13,4 +13,18 @@ der Prozessnummer.
 
 Quelle: https://de.wikipedia.org/wiki/Unix-Shell
 https://de.wikipedia.org/wiki/Daemon
-Vorlesungsfolie: Folie 48-51 a
+Vorlesungsfolie: Folie 48-51 
+
+c)
+PCB = Prozesskontrollblock -> verwaltungstechnischer Repräsentant des Prozess
+enthält Informationen über Prozessnummer, Prozesszustand, Betriebsmittel usw.
+
+Prozessumschaltung: 
+Ein aktiver Prozess wird vom Prozesserzustand Laufend in den Zustand
+blockiert aktuallisiert,dabei werden die Registerinhalte im PCB gespeichert.
+Der bereite Prozess wird in den Zustand Laufend aktualisiert, hierbei wird der virtuelle Adressraum
+auf PCB des neuen Perozessen umgeschaltet, die Registerinhalte aus dem PCB geladen und der Prozess
+wird dort fortgesetzt, wo als letztes der Befehlszähler war.
+
+1.Ereignis: E/A-Geräte führt zun einem Interrupt, folge Prozessumschaltung, E/A Operationen werden
+ausgeführt und wechsel zum anfänglichen Prozess.
