@@ -35,3 +35,7 @@ Kernel-Level-Threads oder Prozessen benötigt.
 Der Threadwechsel ist Teil einer Applikation und somit funktioniert der Threadwechsel ohne Betriebssysstem.
 User-Level-Thread ist nicht für Multiprozessoren gegeignet, da BS nur einem KL-Thread einer CPU zugeordnet werden kann.
 Quelle: Folie 33
+
+2.4
+a) Unabhängige Zeilen: [2-3; 4-5-6;8-9]
+Beispiel Konzept:
