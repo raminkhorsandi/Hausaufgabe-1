@@ -28,3 +28,10 @@ wird dort fortgesetzt, wo als letztes der Befehlszähler war.
 
 1.Ereignis: E/A-Geräte führt zun einem Interrupt, folge Prozessumschaltung, E/A Operationen werden
 ausgeführt und wechsel zum anfänglichen Prozess.
+
+Quelle: Folie 18
+d) Der Kontextwechsel in einem User-Level-Thread zwischen Userthreads geht deutlich schneller, da man keine Syscalls wie bei
+Kernel-Level-Threads oder Prozessen benötigt.
+Der Threadwechsel ist Teil einer Applikation und somit funktioniert der Threadwechsel ohne Betriebssysstem.
+User-Level-Thread ist nicht für Multiprozessoren gegeignet, da BS nur einem KL-Thread einer CPU zugeordnet werden kann.
+Quelle: Folie 33
